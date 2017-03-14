@@ -40,7 +40,7 @@
      btn.style.position = "absolute";
      var tl = new TimelineLite();
      document.body.style.overflow = "hidden";
-     var tween = TweenMax.to(btn, 0.4, {top: btn.offsetTop - 60, ease: Expo.easeIn}),
+     var tween = TweenMax.to(btn, 0.2, {top: btn.offsetTop - 60, ease: Expo.easeIn}),
       tween2 = TweenMax.to(btn, 0.5, {top: pageHeight, ease: Expo.easeOut,
       onComplete: function() {
         btn.style.display = "none";
