@@ -30,23 +30,54 @@
 			  crossorigin="anonymous"></script>
 
    <script type="text/javascript">
-   function clickButton(btn) {
-     var body = document.body,
-         html = document.documentElement;
+	function clickButton(btn) {
+		var otherBtns = $(btn).closest('.push').find('.btn').not($(btn));
+		otherBtns.each(function(ind, el) {
+			$(el).css({
+				'top': el.offsetTop,
+				'left': el.offsetLeft
+			});
+		});
+		$(btn).css({
+			'top': btn.offsetTop,
+			'left': btn.offsetLeft
+		});
+		otherBtns.css('position', 'absolute');
+		$(btn).css('position', 'absolute');
+		/*var body = document.body,
+			html = document.documentElement;
 
      var pageHeight = Math.max( body.scrollHeight, body.offsetHeight,
-                            html.clientHeight, html.scrollHeight, html.offsetHeight );
+                            html.clientHeight, html.scrollHeight, html.offsetHeight );*/
 
-     btn.style.position = "absolute";
-     var tl = new TimelineLite();
-     document.body.style.overflow = "hidden";
-     var tween = TweenMax.to(btn, 0.2, {top: btn.offsetTop - 60, ease: Expo.easeIn}),
-      tween2 = TweenMax.to(btn, 0.5, {top: pageHeight, ease: Expo.easeOut,
-      onComplete: function() {
-        btn.style.display = "none";
-      }});
-     tl.add(tween, 0);
-     tl.add(tween2, 0.5);
+     
+		var tl = new TimelineLite();
+		
+		//document.body.style.overflow = "hidden";
+		var tween = TweenMax.to(btn, 0.2, {
+			top: btn.offsetTop - 60,
+			ease: Power2.easeOut
+		}),
+		tween2 = TweenMax.to(btn, 0.5, {
+			top: $(window).height(),
+			ease: Power2.easeIn,
+			onComplete: function() {
+				$(btn).hide();
+			}
+		});
+		tl.add(tween, 0);
+		tl.add(tween2, 0.2);
+		
+		otherBtns.each(function(ind, el) {
+			var tween = TweenMax.to(el, 0.5, {
+				top: $(window).height() + (ind * $(window).height() * 0.6),
+				ease: Power2.easeIn,
+				onComplete: function() {
+					$(el).hide();
+				}
+			});
+			tl.add(tween, 0.25 + (ind * 0.05));
+		});
    }
    </script>
 
