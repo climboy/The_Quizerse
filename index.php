@@ -10,7 +10,7 @@
   <body id="background">
     <h1>The Quizerse</h1>
    <div class="push">
-     <a class="btn icon-btn btn-default" href="#" onclick="clickButton(this); return false;">
+     <a class="btn icon-btn btn-default" href="#" onclick="clickButton(this); return false;" data-menu="#param">
      <span class="glyphicon btn-glyphicon glyphicon-play img-circle text-muted"></span> <!-- defining icon -->
      Jouer<!-- defining text -->
      </a>
@@ -45,9 +45,9 @@
 		otherBtns.css('position', 'absolute');
 		$(btn).css('position', 'absolute');
 
-     
+
 		var tl = new TimelineLite();
-		
+
 		var tween = TweenMax.to(btn, 0.2, {
 			top: btn.offsetTop - 60,
 			ease: Power2.easeOut
@@ -57,11 +57,15 @@
 			ease: Power2.easeIn,
 			onComplete: function() {
 				$(btn).hide();
+        $($(btn).data("menu")).show();
+        showbuttons($(btn).data("menu"));
+
+
 			}
 		});
 		tl.add(tween, 0);
 		tl.add(tween2, 0.2);
-		
+
 		otherBtns.each(function(ind, el) {
 			var tween = TweenMax.to(el, 0.5, {
 				top: $(window).height() + (ind * $(window).height() * 0.6),
@@ -73,16 +77,57 @@
 			tl.add(tween, 0.25 + (ind * 0.05));
 		});
    }
+function showbuttons(param) {
+  var Btns = $(param).find('.btn');
+  Btns.each(function(ind, el) {
+    // $(el).css({
+    //   'top': el.offsetTop,
+    //   'left': el.offsetLeft
+    // });
+    $(el).data('top', el.offsetTop);
+    $(el).data('left', el.offsetLeft);
+    $(el).css({
+      'top': -100,
+      'left': el.offsetLeft,
+    });
+
+
+  });
+Btns.css('position', 'absolute');
+Btns.each(function(ind, el) {
+  var tween = TweenMax.to(el, 0.5, {
+    top: $(el).data('top'),
+    ease: Power2.easeOut
+  })
+});
+}
+
+
    </script>
 
-   <div class="push">
-     <a class="btn icon-btn btn-primary" style="display:none" href="#" onclick="clickButton(this); return false;">
+   <div id="param" class="push" style="display:none">
+     <a class="btn icon-btn btn-primary"  href="#" onclick="clickButton(this); return false;" data-menu="#themes">
      <span class="glyphicon btn-glyphicon glyphicon-list-alt img-circle text-primary"></span>
      Jouer par thèmes
      </a>
-     <a class="btn icon-btn btn-warning" style="display:none" href="#" onclick="clickButton(this); return false;">
+     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
      <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
      Jouer par difficulté
+     </a>
+   </div>
+
+   <div id="themes" class="push" style="display:none">
+     <a class="btn icon-btn btn-primary"  href="#" onclick="clickButton(this); return false;">
+     <span class="glyphicon btn-glyphicon glyphicon-list-alt img-circle text-primary"></span>
+     Culture Générale
+     </a>
+     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
+     <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
+     Le Monde du Numérique
+     </a>
+     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
+     <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
+     Les Technologies du Web
      </a>
    </div>
   </body>
