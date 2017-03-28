@@ -25,6 +25,18 @@
 				z-index:100;
 			}
 
+			#texte_intro {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				right: 0;
+				height: 4em;
+				margin-top: -2em;
+				opacity: 0;
+				font-size: 3em;
+				color: #FFF;
+			}
+
 			a {
 
 				color: #0080ff;
@@ -51,7 +63,7 @@
 
 	</head>
 
-	<body>
+	<body onclick="location.href='index.php'">
 
 
 
@@ -281,7 +293,9 @@
 					camera.position.z = radius * 5;
 					controls.autoForward = false;
 					controls.updateMovementVector();
-
+					if(document.getElementById('texte_intro').style.opacity != 1) {
+						document.getElementById('texte_intro').style.opacity = 1;
+					}
 				} else {
 					if ( dMoon < dPlanet ) {
 
@@ -302,5 +316,6 @@
 			}
 
 		</script>
+		<div id="texte_intro">Appuyer pour commencer</div>
 	</body>
 </html>

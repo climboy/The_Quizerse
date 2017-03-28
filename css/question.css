@@ -30,3 +30,15 @@ body
     padding: 1px 15px 3px 2px;
     border-radius:50px;
 }*/
+
+.container {
+  background: #FFF;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 600px;
+  margin-left: -200px;
+  margin-top: -300px;
+}
