@@ -13,21 +13,52 @@
 			  crossorigin="anonymous"></script>
     <script type="text/javascript">
     	$(document).ready(function(){
-			// set transform origin to top left
+			// fonction permettant de zoomer le contenaire //
 			TweenMax.set('.container', {
 				visibility: "visible",
 				scale: 0,
 				transformOrigin:"50% 50%"
-			}); 
-			// since scaleX and scaleY are the same you can just use scale
-			TweenMax.to('.container', 1, {scale:1}); 
+			});
+			// scale de 1 sur l'élément //
+			TweenMax.to('.container', 1, {scale:1});
 		});
+
+
+    function showbuttons(question) {
+      var Btns = $(param).find('.btn');
+      Btns.each(function(ind, el) {
+        // $(el).css({
+        //   'top': el.offsetTop,
+        //   'left': el.offsetLeft
+        // });
+        $(el).data('top', el.offsetTop);
+        $(el).data('left', el.offsetLeft);
+        $(el).css({
+          'top': -100,
+          'left': el.offsetLeft,
+        });
+
+
+      });
+    Btns.css('position', 'absolute');
+    Btns.each(function(ind, el) {
+      var tween = TweenMax.to(el, 0.5, {
+        top: $(el).data('top'),
+        ease: Power2.easeOut
+      })
+    });
+    }
     </script>
   </head>
   <body>
 	<div class="container">
 	  <p>Question 1</p>
 	</div>
+  <div id="question">
+    <p>Quel est mon âge ?</p>
+    <button type="button" name="button">18</button>
+    <button type="button" name="button">34</button>
+    <button type="button" name="button">23</button>
   </div>
   </body>
 </html>
