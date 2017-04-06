@@ -20,22 +20,25 @@
 				transformOrigin:"50% 50%"
 			});
 			// scale de 1 sur l'élément //
-			TweenMax.to('.container', 1, {scale:1});
+			TweenMax.to('.container', 1, {scale:1, onComplete: function(){
+        showbuttons('#question');
+      }});
 		});
 
 
     function showbuttons(question) {
-      var Btns = $(param).find('.btn');
+      var Btns = $(question);
+      Btns.show();
       Btns.each(function(ind, el) {
         // $(el).css({
         //   'top': el.offsetTop,
         //   'left': el.offsetLeft
         // });
+        $(el).data('left', $(el).position().left);
         $(el).data('top', el.offsetTop);
-        $(el).data('left', el.offsetLeft);
         $(el).css({
-          'top': -100,
-          'left': el.offsetLeft,
+          'left': -100,
+          'top': el.offsetTop,
         });
 
 
@@ -43,22 +46,27 @@
     Btns.css('position', 'absolute');
     Btns.each(function(ind, el) {
       var tween = TweenMax.to(el, 0.5, {
-        top: $(el).data('top'),
+        left: $(el).data('left'),
         ease: Power2.easeOut
       })
     });
+    console.log(Btns);
     }
+
     </script>
   </head>
   <body>
 	<div class="container">
 	  <p>Question 1</p>
 	</div>
-  <div id="question">
+  <div id="question" style="display:none">
     <p>Quel est mon âge ?</p>
-    <button type="button" name="button">18</button>
-    <button type="button" name="button">34</button>
-    <button type="button" name="button">23</button>
+    <button type="button" name="button" onclick="clickButton(this); return false;">18</button>
+    <button type="button" name="button" onclick="clickButton(this); return false;">34</button>
+    <button type="button" name="button" onclick="clickButton(this); return false;">23</button>
   </div>
+  <script type="text/javascript">
+
+  </script>
   </body>
 </html>

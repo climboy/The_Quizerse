@@ -16,3 +16,9 @@ body
   margin-top: -100px;
   text-align: center;
 }
+
+#question
+{
+  background: #FFF;
+  width: 110px;
+}
