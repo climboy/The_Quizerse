@@ -30,10 +30,7 @@
       var Btns = $(question);
       Btns.show();
       Btns.each(function(ind, el) {
-        // $(el).css({
-        //   'top': el.offsetTop,
-        //   'left': el.offsetLeft
-        // });
+
         $(el).data('left', $(el).position().left);
         $(el).data('top', el.offsetTop);
         $(el).css({
@@ -61,9 +58,9 @@
 	</div>
   <div id="question" style="display:none">
     <p>Quel est mon âge ?</p>
-    <button type="button" name="button" onclick="clickButton(this); return false;">18</button>
-    <button type="button" name="button" onclick="clickButton(this); return false;">34</button>
-    <button type="button" name="button" onclick="clickButton(this); return false;">23</button>
+    <button class="btn icon-btn btn-warning" type="button" name="button" onclick="clickButton(this); return false;">18</button>
+    <button class="btn icon-btn btn-warning" type="button" name="button" onclick="clickButton(this); return false;">34</button>
+    <button class="btn icon-btn btn-warning" type="button" name="button" onclick="clickButton(this); return false;">23</button>
   </div>
   <script type="text/javascript">
 

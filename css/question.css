@@ -20,5 +20,12 @@ body
 #question
 {
   background: #FFF;
-  width: 110px;
+  width: 200px;
+  text-align: center;
+}
+
+button
+{
+  display: block;
+
 }
