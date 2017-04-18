@@ -11,7 +11,7 @@ try {
 }
 
 // Si un thème est défini, on applique le filtre
-$id_theme = (isset($_GET["id_theme"]) && is_numeric($_GET["id_theme"]) ? $_GET["id_theme"] : null);
+$id_theme = (isset($_GET["id_theme"]) && is_numeric($_GET["id_theme"]) ? $_GET["id_theme"] : 2);
 
 // On prend les questions du thème (pour le moment les QCU)
 $query = $bdd->query("
