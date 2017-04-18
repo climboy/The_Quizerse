@@ -118,15 +118,15 @@ Btns.each(function(ind, el) {
    </div>
 
    <div id="themes" class="push" style="display:none">
-     <a class="btn icon-btn btn-primary"  href="#" onclick="clickButton(this); return false;">
+     <a class="btn icon-btn btn-primary"  href="test.php" onclick="clickButton(this); return true;">
      <span class="glyphicon btn-glyphicon glyphicon-list-alt img-circle text-primary"></span>
      Culture Générale
      </a>
-     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
+     <a class="btn icon-btn btn-warning" href="test.php" onclick="clickButton(this); return true;">
      <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
      Le Monde du Numérique
      </a>
-     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
+     <a class="btn icon-btn btn-warning" href="test.php" onclick="clickButton(this); return true;">
      <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
      Les Technologies du Web
      </a>
