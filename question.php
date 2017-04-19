@@ -62,7 +62,7 @@ foreach($questionsBase as $question) {
   <script type="text/javascript">
   	var Quizerse = {
   		questions: <?php echo json_encode($questions); ?>,
-
+      erreur:3,
   		init: function() {
   			// Génère la première question
   			Quizerse.Question.generer(0, true);
@@ -156,6 +156,7 @@ foreach($questionsBase as $question) {
 				$('.container').css('background-color', "#d9534f");
 				$('.container p').css('color', "#fff");
 				msg = Quizerse.Question.instance.feedback_faux;
+				Quizerse.erreurs++;
 			}
 
 			// Alerte après 220ms pour avoir le temps d'afficher le changement de couleur du container
