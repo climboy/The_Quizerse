@@ -25,7 +25,7 @@ body {
 }
 
 #background {
-  background: url(../images/bg-accueil.png);
+  background: url(../images/bg-accueil2.png);
   background-repeat: no-repeat;
     background-size: cover;
   /*width: 100%;
@@ -74,6 +74,22 @@ h2 {
     margin-left: -384px;
     text-align: center;
     box-sizing: border-box;
+    z-index: 5;
+}
+
+#table2, #table3, #table4 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -600px;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+#table2 > img, #table3 > img, #table4 > img {
+    width: 1200px;
+    height: auto;
 }
 
 #table > a {
@@ -94,11 +110,14 @@ h2 {
     margin-top: -112.5px;
 }
 
-#button-flex {
+.button-flex {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     width: 45%;
+}
+
+.button-flex:nth-child(3) {
     margin: 22% auto auto auto;
 }
 
@@ -147,4 +166,90 @@ h2 {
 #table > img {
     position: relative;
     z-index: 5;
+}
+
+
+.dontshow {
+    display: none;
+}
+
+#perso {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    z-index: 2;
+}
+
+#perso > img {
+    width: 80%;
+    height: auto;
+}
+
+.btn-choice {
+    width: 45%;
+    height: 70px;
+    border-radius: 20px;
+    margin: 10px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+    font-size: 32px;
+    color: #fbfefe;
+    text-decoration: none;
+}
+
+.btn-game {
+    width: 30%;
+    height: 70px;
+    border-radius: 20px;
+    margin: 10px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+    font-size: 20px;
+    color: #fbfefe;
+    text-decoration: none;
+}
+
+#table2 > .button-flex, #table3 > .button-flex, #table4 > .button-flex {
+    margin: auto auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -295px;
+    margin-top: -134px;
+}
+
+#table3 > .button-flex, #table4 > .button-flex {
+    width: 60%;
+    margin-left: -360px;
+}
+
+.btn-lvl {
+    background-color: #dcdcdc;
+    box-shadow: 0px 8px 0px #bcbcbc;
+    color: #3a3e53;
+}
+
+.btn-lvl:hover {
+    box-shadow: 0px 6px 0px #bcbcbc;
+    margin-top: 12px;
+    color: #3a3e53;
+}
+
+.btn-theme {
+    background-color: #3acb54;
+    box-shadow: 0px 8px 0px #26923f;
+}
+
+.btn-theme:hover {
+    box-shadow: 0px 6px 0px #26923f;
+    margin-top: 12px;
+    color: #fbfefe;
+}
+
+.btn-choice:hover, .btn-game:hover {
+    text-decoration: none;
 }

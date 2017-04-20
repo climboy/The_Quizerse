@@ -10,21 +10,70 @@
   </head>
   <body id="background">
     <h2>The Quizerse</h2>
-   <div class="push">
-     <div id="table">
+    <div id="table">
         <a class="table-button" href="#" onclick="clickButton(this); return false;" data-menu="#param">
         Jouer</a>
         <img src="images/table.svg" width="768" height="321" alt="table de jeu du joueur" />
+    </div>
+    
+    <div class="button-flex">
+        <a class="btn-accueil btn-badge" href="#" onclick="clickButton(this); return false;">
+        Badge
+        </a>
+        <a class="btn-accueil btn-score" href="#" onclick="clickButton(this); return false;">
+        Score
+        </a>
+    </div>
+   
+    <div id="table2" class="dontshow">
+        <div class="button-flex">
+            <a class="btn-choice btn-theme" href="#" onclick="clickButton(this); return false;">
+            Par Thèmes
+            </a>
+            <a class="btn-choice btn-lvl" href="#" onclick="clickButton(this); return false;">
+            Par difficultés
+            </a>
+        </div>
+        <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
+    </div>
+    
+    <div id="table3" class="dontshow">
+        <div class="button-flex">
+            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            Culture Générale
+            </a>
+            <a class="btn-game btn-lvl" href="#" onclick="clickButton(this); return false;">
+            Culture Numérique
+            </a>
+            
+            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            Technologies du Web
+            </a>
+        </div>
+        <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
+    </div>
+    
+    <div id="table4" class="dontshow">
+        <div class="button-flex">
+            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            Facile
+            </a>
+            <a class="btn-game btn-lvl" href="#" onclick="clickButton(this); return false;">
+            Moyen
+            </a>
+            
+            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            Difficile
+            </a>
+        </div>
+        <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
+    </div>
+     
+      <div id="perso">
+          <img src="images/persos/anim.png" />
       </div>
-        <div id="button-flex">
-            <a class="btn-accueil btn-badge" href="#" onclick="clickButton(this); return false;">
-            Badge
-            </a>
-            <a class="btn-accueil btn-score" href="#" onclick="clickButton(this); return false;">
-            Classement
-            </a>
-       </div>
-   </div>
+      
+      
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
    <script
 			  src="https://code.jquery.com/jquery-3.1.1.min.js"
