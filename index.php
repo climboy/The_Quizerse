@@ -8,7 +8,8 @@
     <meta charset="utf-8">
     <title>The Quizerse</title>
   </head>
-  <body id="background">
+  <body>
+    <div id="background">
     <h2>The Quizerse</h2>
     <div id="table">
         <a class="table-button" href="#" onclick="clickButton(this); return false;" data-menu="#param">
@@ -181,5 +182,6 @@ Btns.each(function(ind, el) {
      Les Technologies du Web
      </a>
    </div>-->
+      </div>
   </body>
 </html>
