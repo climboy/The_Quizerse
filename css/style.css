@@ -206,7 +206,7 @@ h2 {
 
 #table {
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     left: 50%;
     margin-left: -384px;
     text-align: center;
@@ -217,7 +217,7 @@ h2 {
 
 #table2, #table3, #table4 {
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     left: 50%;
     margin-left: -600px;
     text-align: center;

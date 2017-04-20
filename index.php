@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
@@ -12,26 +12,26 @@
     <div id="background">
     <h2>The Quizerse</h2>
     <div id="table">
-        <a class="table-button" href="#" onclick="clickButton(this); return false;" data-menu="#param">
+        <a class="table-button" href="#">
         Jouer</a>
         <img src="images/table.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
     
     <div class="button-flex btnf-acc">
-        <a class="btn-accueil btn-badge" href="#" onclick="clickButton(this); return false;">
+        <a class="btn-accueil btn-badge" href="#">
         Badge
         </a>
-        <a class="btn-accueil btn-score" href="#" onclick="clickButton(this); return false;">
+        <a class="btn-accueil btn-score" href="#">
         Score
         </a>
     </div>
    
     <div id="table2" class="dontshow">
         <div class="button-flex">
-            <a class="btn-choice btn-theme" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-choice btn-theme" href="#">
             Par Thèmes
             </a>
-            <a class="btn-choice btn-lvl" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-choice btn-lvl" href="#">
             Par difficultés
             </a>
         </div>
@@ -40,14 +40,14 @@
     
     <div id="table3" class="dontshow">
         <div class="button-flex">
-            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-theme" href="question.php">
             Culture Générale
             </a>
-            <a class="btn-game btn-lvl" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-lvl" href="question.php">
             Culture Numérique
             </a>
             
-            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-theme" href="question.php">
             Technologies du Web
             </a>
         </div>
@@ -56,14 +56,14 @@
     
     <div id="table4" class="dontshow">
         <div class="button-flex">
-            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-theme" href="question.php">
             Facile
             </a>
-            <a class="btn-game btn-lvl" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-lvl" href="question.php">
             Moyen
             </a>
             
-            <a class="btn-game btn-theme" href="#" onclick="clickButton(this); return false;">
+            <a class="btn-game btn-theme" href="question.php">
             Difficile
             </a>
         </div>
@@ -74,8 +74,43 @@
           <img src="images/persos/anim.png" />
       </div>
       
-      
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script type="text/javascript">
+        // Déclaration des variables
+        var ecranAccueil = document.querySelector('#table');
+        var ecranAccueil2 = document.querySelector('.btnf-acc');
+        var ecranJouer = document.querySelector('#table2');
+        var ecranTheme = document.querySelector('#table3');
+        var ecranNiveau = document.querySelector('#table4');
+        
+        var btnJouer = document.querySelector('.table-button');
+        var btnTheme = document.querySelector('#table2 .button-flex .btn-theme');
+        var btnNiveau = document.querySelector('#table2 .button-flex .btn-lvl');
+        
+        // Ajout d'un écouteur d'évenements au boutons
+        btnJouer.addEventListener('click', accToJouer );
+        btnTheme.addEventListener('click', jouerToTheme );
+        btnNiveau.addEventListener('click', jouerToNiveau );
+        
+        // Déclaration des fonctions
+        function accToJouer(){
+            ecranAccueil.classList.add('dontshow');
+            ecranAccueil2.classList.add('dontshow');
+            ecranJouer.classList.remove('dontshow');
+        }
+        
+        function jouerToTheme(){
+            ecranJouer.classList.add('dontshow');
+            ecranTheme.classList.remove('dontshow');
+        }
+        
+        function jouerToNiveau(){
+            ecranJouer.classList.add('dontshow');
+            ecranNiveau.classList.remove('dontshow');
+        }
+        
+        
+    </script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
    <script
 			  src="https://code.jquery.com/jquery-3.1.1.min.js"
 			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -155,7 +190,7 @@ Btns.each(function(ind, el) {
 }
 
 
-   </script>
+   </script> -->
 
    <!--<div id="param" class="push" style="display:none">
      <a class="btn icon-btn btn-primary"  href="#" onclick="clickButton(this); return false;" data-menu="#themes">
