@@ -99,11 +99,11 @@ h2 {
     flex-flow: row wrap;
     justify-content: space-between;
     width: 45%;
-    margin: 425px auto auto auto;
+    margin: 22% auto auto auto;
 }
 
 .btn-accueil {
-    width: 350px;
+    width: 40%;
     height: 100px;
     border-radius: 20px;
     background-color: green;
