@@ -396,4 +396,17 @@ h2 {
     #table > img {
         max-height: 295px;
     }
+    
+    #table2, #table3, #table4 {
+        margin-left: -500px;
+    }
+    
+    #table2 > .button-flex, #table3 > .button-flex, #table4 > .button-flex {
+        width: 70%;
+        margin-left: -350px;
+    }
+    
+    #table2 > img, #table3 > img, #table4 > img {
+        width: 1000px;
+    }
 }
