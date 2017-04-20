@@ -16,7 +16,7 @@
         <img src="images/table.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
     
-    <div class="button-flex">
+    <div class="button-flex btnf-acc">
         <a class="btn-accueil btn-badge" href="#" onclick="clickButton(this); return false;">
         Badge
         </a>
@@ -156,7 +156,7 @@ Btns.each(function(ind, el) {
 
    </script>
 
-   <div id="param" class="push" style="display:none">
+   <!--<div id="param" class="push" style="display:none">
      <a class="btn icon-btn btn-primary"  href="#" onclick="clickButton(this); return false;" data-menu="#themes">
      <span class="glyphicon btn-glyphicon glyphicon-list-alt img-circle text-primary"></span>
      Jouer par thèmes
@@ -180,6 +180,6 @@ Btns.each(function(ind, el) {
      <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
      Les Technologies du Web
      </a>
-   </div>
+   </div>-->
   </body>
 </html>
