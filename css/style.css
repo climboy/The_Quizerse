@@ -391,3 +391,9 @@ h2 {
 .btn-choice:hover, .btn-game:hover {
     text-decoration: none;
 }
+
+@media screen and (max-device-width: 1366px) {
+    #table > img {
+        max-height: 295px;
+    }
+}
