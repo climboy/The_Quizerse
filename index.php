@@ -9,20 +9,21 @@
     <title>The Quizerse</title>
   </head>
   <body id="background">
-    <h1>The Quizerse</h1>
+    <h2>The Quizerse</h2>
    <div class="push">
-     <a class="btn icon-btn btn-default" href="#" onclick="clickButton(this); return false;" data-menu="#param">
-     <span class="glyphicon btn-glyphicon glyphicon-play img-circle text-muted"></span> <!-- defining icon -->
-     Jouer<!-- defining text -->
-     </a>
-     <a class="btn icon-btn btn-primary" href="#" onclick="clickButton(this); return false;">
-     <span class="glyphicon btn-glyphicon glyphicon-list-alt img-circle text-primary"></span>
-     Score
-     </a>
-     <a class="btn icon-btn btn-warning" href="#" onclick="clickButton(this); return false;">
-     <span class="glyphicon btn-glyphicon glyphicon-star img-circle text-warning"></span>
-     Badge
-     </a>
+     <div id="table">
+        <a class="table-button" href="#" onclick="clickButton(this); return false;" data-menu="#param">
+        Jouer</a>
+        <img src="images/table.svg" width="768" height="321" alt="table de jeu du joueur" />
+      </div>
+        <div id="button-flex">
+            <a class="btn-accueil btn-badge" href="#" onclick="clickButton(this); return false;">
+            Badge
+            </a>
+            <a class="btn-accueil btn-score" href="#" onclick="clickButton(this); return false;">
+            Classement
+            </a>
+       </div>
    </div>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
    <script
