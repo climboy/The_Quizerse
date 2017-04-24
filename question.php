@@ -165,37 +165,45 @@ foreach($questionsBase as $question) {
   		// Lors du clic sur une réponse
   		reponse: function() {
 			// Pour le bouton cliqué, on vérifie si la réponse est juste, on applique la couleur et affiche le feedback correspondant
-			$('.container').css('transition', 'all .2s');
-			var msg = "";
+			$('.container').css('transition', 'all .1s');
+			var msg = "", suite = false;
 
 			if($(this).data('j') == '1') {
 				// Réponse juste
 				$('.container').css('background-color', "#5cb85c");
 				$('.container p').css('color', "#fff");
 				msg = Quizerse.Question.instance.feedback_juste;
+        suite = true;
 			} else {
 				// Réponse fausse
-				$('.container').css('background-color', "#d9534f");
-				$('.container p').css('color', "#fff");
+				//$('.container').css('background-color', "#d9534f");
+				//$('.container p').css('color', "#fff");
+        $(this).removeClass('btn-warning');
+        $(this).addClass('btn-danger');
 				msg = Quizerse.Question.instance.feedback_faux;
 				Quizerse.erreurs++;
+
+        
 			}
 
 			// Alerte après 220ms pour avoir le temps d'afficher le changement de couleur du container
 			setTimeout(function() {
-				alert(msg);
-				Quizerse.suite();
-			}, 220);
-  		},
-
-  		// Question suivante
-  		suite: function() {
         // 3 erreurs, fin du jeu
         if(Quizerse.erreurs == 3) {
           alert('FAIL');
           location.href = 'index.php';
+          return;
         }
 
+				alert(msg);
+        if(suite) {
+				  Quizerse.suite();
+        }
+			}, 100);
+  		},
+
+  		// Question suivante
+  		suite: function() {
 				if (Quizerse.questions[Quizerse.Question.actuelle+1]) {
 					Quizerse.Question.generer(Quizerse.Question.actuelle++);
 				}
