@@ -104,6 +104,8 @@
   }
 }
 
+/* -------- */
+
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -131,6 +133,71 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+/* -------- */
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }
 
 /* -------------------------------------------------------- */
@@ -223,6 +290,7 @@ h2 {
     text-align: center;
     box-sizing: border-box;
     z-index: 5;
+    animation: float 1.5s ease-in-out infinite;
 }
 
 #table2 > img, #table3 > img, #table4 > img {
@@ -272,6 +340,7 @@ h2 {
     font-size: 50px;
     color: #fbfefe;
     text-decoration: none;
+    animation: float 1.5s ease-in-out infinite;
 }
 
 .btn-accueil:hover {
@@ -316,6 +385,7 @@ h2 {
     bottom: 0;
     left: 5%;
     z-index: 2;
+    animation: float 1.5s ease-in-out infinite;
 }
 
 #perso > img {

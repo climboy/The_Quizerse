@@ -19,7 +19,7 @@
 
     <div class="button-flex btnf-acc">
         <a class="btn-accueil btn-badge" href="#">
-        Badge
+        Badges
         </a>
         <a class="btn-accueil btn-score" href="#">
         Score
@@ -29,10 +29,10 @@
     <div id="table2" class="dontshow">
         <div class="button-flex">
             <a class="btn-choice btn-theme" href="#">
-            Par Thèmes
+            Par Thème
             </a>
             <a class="btn-choice btn-lvl" href="#">
-            Par difficultés
+            Par difficulté
             </a>
         </div>
         <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
@@ -56,14 +56,14 @@
 
     <div id="table4" class="dontshow">
         <div class="button-flex">
-            <a class="btn-game btn-theme" href="question.php">
+            <a class="btn-game btn-theme" href="question.php?id_difficulte=1">
             Facile
             </a>
-            <a class="btn-game btn-lvl" href="question.php">
+            <a class="btn-game btn-lvl" href="question.php?id_difficulte=2">
             Moyen
             </a>
 
-            <a class="btn-game btn-theme" href="question.php">
+            <a class="btn-game btn-theme" href="question.php?id_difficulte=3">
             Difficile
             </a>
         </div>

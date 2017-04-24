@@ -10,16 +10,38 @@ try {
 	die('Erreur : ' . $e->getMessage());
 }
 
-// Si un thème est défini, on applique le filtre
-$id_theme = (isset($_GET["id_theme"]) && is_numeric($_GET["id_theme"]) ? $_GET["id_theme"] : null);
+// Si une difficulté est définie, on applique le filtre
+$id_difficulte = (isset($_GET["id_difficulte"]) && is_numeric($_GET["id_difficulte"]) ? $_GET["id_difficulte"] : null);
 
-// On prend les questions du thème (pour le moment les QCU)
-$query = $bdd->query("
-	SELECT *
-	FROM question
-	WHERE typologie = 'qcu'
-	".(!empty($id_theme) ? " AND id_theme = $id_theme " : "")."
-	ORDER BY id");
+// Si un thème est défini, on applique le filtre
+$id_theme = (empty($id_difficulte) && isset($_GET["id_theme"]) && is_numeric($_GET["id_theme"]) ? $_GET["id_theme"] : null);
+
+if(!empty($id_difficulte)) {
+  // On prend x questions au hasard parmi les thèmes selon la difficulté (pour le moment les QCU)
+  $query = $bdd->prepare("SELECT nb_questions FROM difficulte WHERE id = :id_difficulte");
+  $query->bindValue("id_difficulte", $id_difficulte, PDO::PARAM_INT);
+  $query->execute();
+
+  $nb_questions = $query->fetchColumn();
+  if(empty($nb_questions)) {
+    $nb_questions = 0;
+  }
+
+  $query = $bdd->query("
+    SELECT *
+    FROM question q
+    WHERE typologie = 'qcu'
+    ORDER BY RAND()
+    LIMIT $nb_questions");
+} else {
+  // On prend les questions du thème (pour le moment les QCU)
+  $query = $bdd->query("
+  	SELECT *
+  	FROM question
+  	WHERE typologie = 'qcu'
+  	".(!empty($id_theme) ? " AND id_theme = $id_theme " : "")."
+  	ORDER BY id");
+}
 $questionsBase = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $questions = array();
@@ -62,7 +84,7 @@ foreach($questionsBase as $question) {
   <script type="text/javascript">
   	var Quizerse = {
   		questions: <?php echo json_encode($questions); ?>,
-      erreur:3,
+      erreurs: 0,
   		init: function() {
   			// Génère la première question
   			Quizerse.Question.generer(0, true);
@@ -168,6 +190,12 @@ foreach($questionsBase as $question) {
 
   		// Question suivante
   		suite: function() {
+        // 3 erreurs, fin du jeu
+        if(Quizerse.erreurs == 3) {
+          alert('FAIL');
+          location.href = 'index.php';
+        }
+
 				if (Quizerse.questions[Quizerse.Question.actuelle+1]) {
 					Quizerse.Question.generer(Quizerse.Question.actuelle++);
 				}
