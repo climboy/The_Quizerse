@@ -168,7 +168,13 @@ foreach($questionsBase as $question) {
 
   		// Question suivante
   		suite: function() {
-  			Quizerse.Question.generer(Quizerse.Question.actuelle++);
+				if (Quizerse.questions[Quizerse.Question.actuelle+1]) {
+					Quizerse.Question.generer(Quizerse.Question.actuelle++);
+				}
+				else {
+					alert('Fin du jeu');
+					location.href = 'index.php';
+				}
   		}
   	};
 

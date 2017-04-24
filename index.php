@@ -16,7 +16,7 @@
         Jouer</a>
         <img src="images/table.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
-    
+
     <div class="button-flex btnf-acc">
         <a class="btn-accueil btn-badge" href="#">
         Badge
@@ -25,7 +25,7 @@
         Score
         </a>
     </div>
-   
+
     <div id="table2" class="dontshow">
         <div class="button-flex">
             <a class="btn-choice btn-theme" href="#">
@@ -37,23 +37,23 @@
         </div>
         <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
-    
+
     <div id="table3" class="dontshow">
         <div class="button-flex">
-            <a class="btn-game btn-theme" href="question.php">
+            <a class="btn-game btn-theme" href="question.php?id_theme=1">
             Culture Générale
             </a>
-            <a class="btn-game btn-lvl" href="question.php">
+            <a class="btn-game btn-lvl" href="question.php?id_theme=2">
             Culture Numérique
             </a>
-            
-            <a class="btn-game btn-theme" href="question.php">
+
+            <a class="btn-game btn-theme" href="question.php?id_theme=3">
             Technologies du Web
             </a>
         </div>
         <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
-    
+
     <div id="table4" class="dontshow">
         <div class="button-flex">
             <a class="btn-game btn-theme" href="question.php">
@@ -62,18 +62,18 @@
             <a class="btn-game btn-lvl" href="question.php">
             Moyen
             </a>
-            
+
             <a class="btn-game btn-theme" href="question.php">
             Difficile
             </a>
         </div>
         <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
     </div>
-     
+
       <div id="perso">
-          <img src="images/persos/anim.png" />
+          <img id="men" src="images/persos/anim.png" />
       </div>
-      
+
     <script type="text/javascript">
         // Déclaration des variables
         var ecranAccueil = document.querySelector('#table');
@@ -81,34 +81,43 @@
         var ecranJouer = document.querySelector('#table2');
         var ecranTheme = document.querySelector('#table3');
         var ecranNiveau = document.querySelector('#table4');
-        
+
         var btnJouer = document.querySelector('.table-button');
         var btnTheme = document.querySelector('#table2 .button-flex .btn-theme');
         var btnNiveau = document.querySelector('#table2 .button-flex .btn-lvl');
-        
+
         // Ajout d'un écouteur d'évenements au boutons
         btnJouer.addEventListener('click', accToJouer );
         btnTheme.addEventListener('click', jouerToTheme );
         btnNiveau.addEventListener('click', jouerToNiveau );
-        
+
         // Déclaration des fonctions
         function accToJouer(){
             ecranAccueil.classList.add('dontshow');
             ecranAccueil2.classList.add('dontshow');
             ecranJouer.classList.remove('dontshow');
         }
-        
+
         function jouerToTheme(){
             ecranJouer.classList.add('dontshow');
             ecranTheme.classList.remove('dontshow');
         }
-        
+
         function jouerToNiveau(){
             ecranJouer.classList.add('dontshow');
             ecranNiveau.classList.remove('dontshow');
         }
-        
-        
+
+
+    </script>
+    <script
+ 			  src="https://code.jquery.com/jquery-3.1.1.min.js"
+ 			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+ 			  crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function movepicture($img) {
+        var picture = $(img)
+      }
     </script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
    <script
