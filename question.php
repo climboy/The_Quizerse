@@ -30,7 +30,7 @@ if(!empty($id_difficulte)) {
   $query = $bdd->query("
     SELECT *
     FROM question q
-    WHERE typologie = 'qcu'
+    WHERE typologie IN ('qcu', 'qcm')
     ORDER BY RAND()
     LIMIT $nb_questions");
 } else {
@@ -38,7 +38,7 @@ if(!empty($id_difficulte)) {
   $query = $bdd->query("
   	SELECT *
   	FROM question
-  	WHERE typologie = 'qcu'
+  	WHERE typologie IN ('qcu', 'qcm')
   	".(!empty($id_theme) ? " AND id_theme = $id_theme " : "")."
   	ORDER BY id");
 }
@@ -137,84 +137,111 @@ foreach($questionsBase as $question) {
 	  			}
 	  		},
 
-	  		afficher: function() {
+        afficher: function() {
 	  			// fonction permettant de zoomer le contenaire //
-				TweenMax.set('.container', {
-					visibility: "visible",
-					scale: 0,
-					transformOrigin:"50% 50%"
-				});
-				// scale de 1 sur l'élément //
-				TweenMax.to('.container', 0.7, {scale:1});
+  				TweenMax.set('.container', {
+  					visibility: "visible",
+  					scale: 0,
+  					transformOrigin:"50% 50%"
+  				});
+  				// scale de 1 sur l'élément //
+  				TweenMax.to('.container', 0.7, {scale:1});
 	  		},
 
 	  		supprimer: function(genereSuivante) {
 	  			TweenMax.to('.container', 0.7, {
-					scale:0,
-					onComplete: function() {
-						$('.container').remove();
-						Quizerse.Question.instance = null;
-						if(genereSuivante) {
-							Quizerse.Question.generer(null, true);
-						}
-					}
-				});
-	  		}
+  					scale:0,
+  					onComplete: function() {
+  						$('.container').remove();
+  						Quizerse.Question.instance = null;
+  						if(genereSuivante) {
+  							Quizerse.Question.generer(null, true);
+  						}
+  					}
+  				});
+    		}
   		},
 
   		// Lors du clic sur une réponse
   		reponse: function() {
-			// Pour le bouton cliqué, on vérifie si la réponse est juste, on applique la couleur et affiche le feedback correspondant
-			$('.container').css('transition', 'all .1s');
-			var msg = "", suite = false;
+  			// Pour le bouton cliqué, on vérifie si la réponse est juste, on applique la couleur et affiche le feedback correspondant
+  			$('.container').css('transition', 'all .1s');
+  			var msg = "", suite = false;
 
-			if($(this).data('j') == '1') {
-				// Réponse juste
-				$('.container').css('background-color', "#5cb85c");
-				$('.container p').css('color', "#fff");
-				msg = Quizerse.Question.instance.feedback_juste;
-        suite = true;
-			} else {
-				// Réponse fausse
-				//$('.container').css('background-color', "#d9534f");
-				//$('.container p').css('color', "#fff");
-        $(this).removeClass('btn-warning');
-        $(this).addClass('btn-danger');
-				msg = Quizerse.Question.instance.feedback_faux;
-				Quizerse.erreurs++;
+        switch(Quizerse.Question.instance.typologie) {
+          case 'qcu':
+            if($(this).data('j') == '1') {
+              // Réponse juste
+              $('.container').css('background-color', "#5cb85c");
+              $('.container p').css('color', "#fff");
+              msg = Quizerse.Question.instance.feedback_juste;
+              suite = true;
+            } else {
+              // Réponse fausse
+              //$('.container').css('background-color', "#d9534f");
+              //$('.container p').css('color', "#fff");
+              $(this).removeClass('btn-warning');
+              $(this).addClass('btn-danger');
+              msg = Quizerse.Question.instance.feedback_faux;
+              Quizerse.erreurs++;
+            }
+          break;
 
-        
-			}
+          case 'qcm':
+            if($(this).data('j') == '1') {
+              // Réponse juste
+              $(this).removeClass('btn-warning');
+              $(this).addClass('btn-success');
 
-			// Alerte après 220ms pour avoir le temps d'afficher le changement de couleur du container
-			setTimeout(function() {
-        // 3 erreurs, fin du jeu
-        if(Quizerse.erreurs == 3) {
-          alert('FAIL');
-          location.href = 'index.php';
-          return;
+              if($('.container').find('.btn[data-j="1"]').length == $('.container').find('.btn.btn-success').length) {
+                msg = Quizerse.Question.instance.feedback_juste;
+                suite = true;
+
+                $('.container').css('background-color', "#5cb85c");
+                $('.container p').css('color', "#fff");
+              }
+            } else {
+              // Réponse fausse
+              $(this).removeClass('btn-warning');
+              $(this).addClass('btn-danger');
+              msg = Quizerse.Question.instance.feedback_faux;
+              Quizerse.erreurs++;
+            }
+          break;
         }
 
-				alert(msg);
-        if(suite) {
-				  Quizerse.suite();
-        }
-			}, 100);
+  			// Alerte après 220ms pour avoir le temps d'afficher le changement de couleur du container
+  			setTimeout(function() {
+          // 3 erreurs, fin du jeu
+          if(Quizerse.erreurs == 3) {
+            alert('FAIL');
+            location.href = 'index.php';
+            return;
+          }
+
+          if(msg != "") {
+  				  alert(msg);
+          }
+
+          if(suite) {
+  				  Quizerse.suite();
+          }
+  			}, 100);
   		},
 
   		// Question suivante
   		suite: function() {
-				if (Quizerse.questions[Quizerse.Question.actuelle+1]) {
-					Quizerse.Question.generer(Quizerse.Question.actuelle++);
-				}
-				else {
-					alert('Fin du jeu');
-					location.href = 'index.php';
-				}
+  			if (Quizerse.questions[Quizerse.Question.actuelle+1]) {
+  				Quizerse.Question.generer(Quizerse.Question.actuelle++);
+  			}
+  			else {
+  				alert('Fin du jeu');
+  				location.href = 'index.php';
+  			}
   		}
   	};
 
-  	Quizerse.init();
-  </script>
+    Quizerse.init();
+</script>
   </body>
 </html>
