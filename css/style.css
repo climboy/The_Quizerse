@@ -214,9 +214,7 @@ body {
     background-color: black;
 }
 
-.btnf-acc {
-    animation: 1s ease-out 0s 1 slideInFromRight;
-}
+
 
 #background {
     position: absolute;
@@ -279,7 +277,6 @@ h2 {
     text-align: center;
     box-sizing: border-box;
     z-index: 5;
-    animation: 1s ease-out 0s 1 slideInFromBottom;
 }
 
 #table2, #table3, #table4 {
@@ -290,7 +287,7 @@ h2 {
     text-align: center;
     box-sizing: border-box;
     z-index: 5;
-    animation: float 1.5s ease-in-out infinite;
+
 }
 
 #table2 > img, #table3 > img, #table4 > img {
@@ -340,7 +337,6 @@ h2 {
     font-size: 50px;
     color: #fbfefe;
     text-decoration: none;
-    animation: float 1.5s ease-in-out infinite;
 }
 
 .btn-accueil:hover {
@@ -466,16 +462,16 @@ h2 {
     #table > img {
         max-height: 295px;
     }
-    
+
     #table2, #table3, #table4 {
         margin-left: -500px;
     }
-    
+
     #table2 > .button-flex, #table3 > .button-flex, #table4 > .button-flex {
         width: 70%;
         margin-left: -350px;
     }
-    
+
     #table2 > img, #table3 > img, #table4 > img {
         width: 1000px;
     }

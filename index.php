@@ -19,7 +19,7 @@
 
     <div class="button-flex btnf-acc">
         <a class="btn-accueil btn-badge" href="#">
-        Badges
+        Badge
         </a>
         <a class="btn-accueil btn-score" href="#">
         Score
@@ -29,10 +29,10 @@
     <div id="table2" class="dontshow">
         <div class="button-flex">
             <a class="btn-choice btn-theme" href="#">
-            Par Thème
+            Par Thèmes
             </a>
             <a class="btn-choice btn-lvl" href="#">
-            Par difficulté
+            Par difficultés
             </a>
         </div>
         <img src="images/table2.svg" width="768" height="321" alt="table de jeu du joueur" />
@@ -56,14 +56,14 @@
 
     <div id="table4" class="dontshow">
         <div class="button-flex">
-            <a class="btn-game btn-theme" href="question.php?id_difficulte=1">
+            <a class="btn-game btn-theme" href="question.php">
             Facile
             </a>
-            <a class="btn-game btn-lvl" href="question.php?id_difficulte=2">
+            <a class="btn-game btn-lvl" href="question.php">
             Moyen
             </a>
 
-            <a class="btn-game btn-theme" href="question.php?id_difficulte=3">
+            <a class="btn-game btn-theme" href="question.php">
             Difficile
             </a>
         </div>
@@ -116,7 +116,7 @@
  			  crossorigin="anonymous"></script>
     <script type="text/javascript">
       function movepicture($img) {
-        var picture = $(img)
+        var picture = $(img).animate('#perso')
       }
     </script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
